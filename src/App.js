@@ -20,6 +20,7 @@ import {
   FormText
 } from 'reactstrap';
 
+import { Game } from "./screens"
 
 class Player extends React.Component {
   constructor(props) {
@@ -94,37 +95,6 @@ class PlayerForm extends React.Component {
         <Button>Submit</Button>
       </Form>
     );
-  }
-}
-
-class Game extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      otherPlayers: [],
-      currentPlayer: null,
-      gameStarted: false
-    }
-  }
-
-  recordPlayerName(name) {
-    alert('in game and name is ' + name);
-    this.setState({currentPlayer: name});
-  }
-
-  render() {
-    if (this.state.gameStarted) {
-      // render the board
-    } else {
-      alert('rendering GameSetup with currentPlayer ' + this.state.currentPlayer);
-      return(
-        <GameSetup
-          currentPlayer={this.state.currentPlayer}
-          recordPlayerName={this.recordPlayerName}>
-        </GameSetup>
-      );
-    }
   }
 }
 
