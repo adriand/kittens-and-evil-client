@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 
-function Game() {
+export default function Game() {
   const [otherPlayers, setOtherPlayers] = useState([]);
   const [currentPlayer, setCurrentPlayer] = useState(null);
   const [gameStarted, setGameStarted] = useState(false);
 
   const recordPlayerName = (name) => {
     alert('in game and name is ' + name);
-    setPlayerName(name);
+    setCurrentPlayer(name);
   }
 
   if (gameStarted) {
