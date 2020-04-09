@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import {
   Collapse,
   Navbar,
@@ -11,75 +11,42 @@ import {
   Row,
   Col,
   Jumbotron,
-  Button,
   Card
 } from 'reactstrap';
+import Game from "./screens/Game";
 
-import Game from "./screens/Game"
+export default function App() {
+  // menu
+  const [isOpen, setIsOpen] = useState(false);
 
-class Player extends React.Component {
-  constructor(props) {
-    super(props);
+  const toggle = () => {
+    setIsOpen(!isOpen);
   }
 
-  render() {
-    return (
-      <Player>
-        <Card>
-          <div className="card-body">
-            <h5 className="card-title">{this.props.name}</h5>
-            <p className="card-text">{this.props.description}</p>
-          </div>
-        </Card>
-      </Player>
-    )
-  }
+  return (
+    <div>
+      <Navbar color="inverse" light expand="md">
+        <NavbarBrand href="/">Kittens &amp; Evil</NavbarBrand>
+        <NavbarToggler onClick={toggle} />
+        <Collapse isOpen={isOpen} navbar>
+          <Nav className="ml-auto" navbar>
+            <NavItem>
+              <NavLink href="/">Who Knows</NavLink>
+            </NavItem>
+            <NavItem>
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Navbar>
+      <Jumbotron>
+        <Container>
+          <Row>
+            <Col>
+              <Game />
+            </Col>
+          </Row>
+        </Container>
+      </Jumbotron>
+    </div>
+  );
 }
-
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      isOpen: false
-    };
-  }
-
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  }
-
-  render() {
-    return (
-      <div>
-        <Navbar color="inverse" light expand="md">
-          <NavbarBrand href="/">Kittens &amp; Evil</NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="/">Who Knows</NavLink>
-              </NavItem>
-              <NavItem>
-              </NavItem>
-            </Nav>
-          </Collapse>
-        </Navbar>
-        <Jumbotron>
-          <Container>
-            <Row>
-              <Col>
-                <Game />
-              </Col>
-            </Row>
-          </Container>
-        </Jumbotron>
-      </div>
-    );
-  }
-}
-
-export default App;

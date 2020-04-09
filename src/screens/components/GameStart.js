@@ -6,11 +6,10 @@ import {
   Input,
   Button
 } from 'reactstrap';
+import Player from './Player';
 
 export default function GameStart(props) {
   return(
-    <>
-      Hello, {props.currentPlayer}!
-    </>
+    <Player currentPlayer={props.currentPlayer} />
   );
 }
