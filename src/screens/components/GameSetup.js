@@ -6,7 +6,12 @@ export default function GameSetup(props) {
   console.log('in game setup and current player is ' + props.currentPlayer);
   if (props.currentPlayer) {
     // return <GameStart />;
+    return(
+      <>
+        Hello, {props.currentPlayer}!
+      </>
+    );
   } else {
-    return <PlayerForm recordPlayerName = {(name) => props.recordPlayerName} />;
+    return <PlayerForm recordPlayerName={props.recordPlayerName} />;
   }
 }

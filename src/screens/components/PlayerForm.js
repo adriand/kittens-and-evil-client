@@ -9,12 +9,11 @@ import {
 
 export default function PlayerForm(props) {
   const [value, setValue] = useState('');
-  const recordPlayerName = props.recordPlayerName;
 
   const handleSubmit = (event) => {
     event.preventDefault();
     alert('A name was submitted: ' + value);
-    recordPlayerName(value);
+    props.recordPlayerName(value);
   }
 
   return (
