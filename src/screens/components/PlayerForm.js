@@ -12,8 +12,11 @@ export default function PlayerForm(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert('A name was submitted: ' + value);
-    props.recordPlayerName(value);
+    if (value != '') {
+      props.recordPlayerName(value);
+    } else {
+      alert("Please enter your name.");
+    }
   }
 
   return (

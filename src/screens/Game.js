@@ -7,7 +7,6 @@ export default function Game() {
   const [gameStarted, setGameStarted] = useState(false);
 
   const recordPlayerName = (name) => {
-    alert('in game and name is ' + name);
     setCurrentPlayer(name);
   }
 

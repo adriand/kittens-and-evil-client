@@ -12,12 +12,7 @@ import {
   Col,
   Jumbotron,
   Button,
-  Card,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  FormText
+  Card
 } from 'reactstrap';
 
 import Game from "./screens/Game"
