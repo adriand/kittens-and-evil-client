@@ -20,7 +20,7 @@ import {
   FormText
 } from 'reactstrap';
 
-import { Game } from "./screens"
+import Game from "./screens/Game"
 
 class Player extends React.Component {
   constructor(props) {
@@ -38,63 +38,6 @@ class Player extends React.Component {
         </Card>
       </Player>
     )
-  }
-}
-
-class GameStart extends React.Component {
-  constructor(props) {
-    super(props);
-
-  }
-}
-
-class GameSetup extends React.Component {
-  constructor(props) {
-    super(props);
-
-  }
-
-  render() {
-    alert('in game setup and current player is ' + this.props.currentPlayer);
-    if (this.props.currentPlayer) {
-      return <GameStart />;
-    } else {
-      return <PlayerForm recordPlayerName = {(name) => this.props.recordPlayerName} />;
-    }
-  } 
-}
-
-class PlayerForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { value: '' };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
-    this.props.recordPlayerName(this.state.value);
-    event.preventDefault();
-  }
-
-  render() {
-    return (
-      <Form onSubmit={this.handleSubmit}>
-        <FormGroup>
-          <Label for="name">
-            Player Name
-            <Input type="text" value={this.state.value} onChange={this.handleChange} />
-          </Label>
-        </FormGroup>
-        <Button>Submit</Button>
-      </Form>
-    );
   }
 }
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import GameSetup from './components/GameSetup';
 
 export default function Game() {
   const [otherPlayers, setOtherPlayers] = useState([]);
@@ -13,7 +14,7 @@ export default function Game() {
   if (gameStarted) {
     return <div>render the game board</div>
   } else {
-    alert('rendering GameSetup with currentPlayer ' + this.state.currentPlayer);
+    console.log('rendering GameSetup with currentPlayer ' + currentPlayer);
     return(
       <GameSetup
         currentPlayer={currentPlayer}
