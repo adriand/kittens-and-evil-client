@@ -15,6 +15,7 @@ import {
 import Game from "./screens/Game";
 import NoticeBoard from "./components/NoticeBoard";
 import DevStatus from "./components/DevStatus";
+import "./App.css";
 
 export default function App() {
   // menu
@@ -46,7 +47,10 @@ export default function App() {
             <Col>
               <NoticeBoard notice={notice} />
               <Game setNotice={setNotice} />
-              <br />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
               <DevStatus
                 environment={process.env.NODE_ENV}
                 api_location={process.env.REACT_APP_API_URL}

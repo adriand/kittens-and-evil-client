@@ -14,7 +14,7 @@ export default function Game(props) {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (!currentPlayer && token) {
+    if (!currentPlayer && token !== null) {
       fetch(`${process.env.REACT_APP_API_URL}/players/fetch_with_token.json?token=${token}`)
         .then(res => res.json())
         .then((data) => {

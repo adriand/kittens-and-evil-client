@@ -4,13 +4,18 @@ import {
 } from 'reactstrap';
 
 export default function DevStatus(props) {
+  const clearToken = (event) => {
+    event.preventDefault();
+    localStorage.removeItem("token");
+  }
+
   return (
-    <div>
-      <small>
-        Running in <strong>{props.environment}</strong><br />
-        API is at <strong>{props.api_location}</strong><br />
-        Token is <strong>{props.token}</strong>
-      </small>
+    <div id="dev_status">
+      Running in <strong>{props.environment}</strong><br />
+      API is at <strong>{props.api_location}</strong><br />
+      Token is <strong>{props.token || "EMPTY"}</strong>
+      &nbsp;
+      <a href="#" onClick={clearToken}>Clear</a>
     </div>
   )
 }
