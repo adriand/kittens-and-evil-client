@@ -10,8 +10,7 @@ import {
   Container,
   Row,
   Col,
-  Jumbotron,
-  Card
+  Jumbotron
 } from 'reactstrap';
 import Game from "./screens/Game";
 
@@ -43,6 +42,14 @@ export default function App() {
           <Row>
             <Col>
               <Game />
+              <br />
+              <div>
+                <small>
+                  Running in <strong>{process.env.NODE_ENV}</strong><br />
+                  API is at <strong>{process.env.REACT_APP_API_URL}</strong><br />
+                  Token is <strong>{localStorage.getItem("token")}</strong>
+                </small>
+              </div>
             </Col>
           </Row>
         </Container>

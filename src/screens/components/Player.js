@@ -7,8 +7,8 @@ export default function Player(props) {
   return (
     <Card>
       <div className="card-body">
-        <h5 className="card-title">{props.currentPlayer}</h5>
-        <p className="card-text">A dirty, weather-beaten man with scraggly dark hair.</p>
+        <h5 className="card-title">{props.currentPlayer.name}</h5>
+        <p className="card-text">{props.currentPlayer.description}</p>
       </div>
     </Card>
   )

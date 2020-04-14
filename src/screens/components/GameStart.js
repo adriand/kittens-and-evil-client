@@ -9,16 +9,16 @@ export default function GameStart(props) {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3005/games.json')
+    fetch(`${process.env.REACT_APP_API_URL}/games.json`)
       .then(res => res.json())
       .then((data) => {
         setGames(data);
       })
       .catch(console.log)
-  });
+  },[]);
 
   const gameList = games.map((game) =>
-    <Card>
+    <Card key={game.id}>
       <div className="card-body">
         <h5 className="card-title">{game.title}</h5>
         <Button>Join</Button>

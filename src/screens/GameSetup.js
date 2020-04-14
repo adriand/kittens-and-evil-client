@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PlayerForm from "./components/PlayerForm"
 import GameStart from "./components/GameStart"
 
 export default function GameSetup(props) {
-  console.log('in game setup and current player is ' + props.currentPlayer);
   if (props.currentPlayer) {
     return <GameStart currentPlayer={props.currentPlayer}></GameStart>
   } else {
-    return <PlayerForm recordPlayerName={props.recordPlayerName} />;
+    return <PlayerForm capturePlayer={props.capturePlayer} />;
   }
 }

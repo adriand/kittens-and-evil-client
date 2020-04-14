@@ -13,7 +13,24 @@ export default function PlayerForm(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (value !== '') {
-      props.recordPlayerName(value);
+
+      fetch(`${process.env.REACT_APP_API_URL}/players`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          "player": {
+            "name": value
+          }
+        })
+      })
+      .then(resp => resp.json())
+      .then(player => {
+        console.log(player);
+        props.capturePlayer(player);
+      });
     } else {
       alert("Please enter your name.");
     }
