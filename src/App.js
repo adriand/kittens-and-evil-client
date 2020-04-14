@@ -13,10 +13,13 @@ import {
   Jumbotron
 } from 'reactstrap';
 import Game from "./screens/Game";
+import NoticeBoard from "./components/NoticeBoard";
+import DevStatus from "./components/DevStatus";
 
 export default function App() {
   // menu
   const [isOpen, setIsOpen] = useState(false);
+  const [notice, setNotice] = useState({message: null, color: null});
 
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -41,15 +44,14 @@ export default function App() {
         <Container>
           <Row>
             <Col>
-              <Game />
+              <NoticeBoard notice={notice} />
+              <Game setNotice={setNotice} />
               <br />
-              <div>
-                <small>
-                  Running in <strong>{process.env.NODE_ENV}</strong><br />
-                  API is at <strong>{process.env.REACT_APP_API_URL}</strong><br />
-                  Token is <strong>{localStorage.getItem("token")}</strong>
-                </small>
-              </div>
+              <DevStatus
+                environment={process.env.NODE_ENV}
+                api_location={process.env.REACT_APP_API_URL}
+                token={localStorage.getItem("token")}
+              />
             </Col>
           </Row>
         </Container>

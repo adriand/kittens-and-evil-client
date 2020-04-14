@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import GameSetup from './GameSetup';
 import Board from './Board';
 
-export default function Game() {
+export default function Game(props) {
   const [otherPlayers, setOtherPlayers] = useState([]);
   const [currentPlayer, setCurrentPlayer] = useState(null);
   const [gameStarted, setGameStarted] = useState(false);
@@ -20,7 +20,7 @@ export default function Game() {
         .then((data) => {
           setCurrentPlayer(data);
         })
-        .catch(console.log)
+        .catch((err) => {props.setNotice({message: `${err}`, color: "danger"})})
     }
   },[]);
 
