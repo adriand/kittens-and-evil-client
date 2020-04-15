@@ -1,16 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
-  Alert
+  Alert,
+  Fade
 } from 'reactstrap';
 
 export default function NoticeBoard(props) {
   if (props.notice.message) {
+
+    setTimeout(() => {
+      // clear self by calling parent's setNotice
+      props.setNotice({ message: null, color: null });
+    }, 3000);
+
     return (
-      <div>
+      <Fade in={true}>
         <Alert color={props.notice.color}>
           {props.notice.message}
         </Alert>
-      </div>
+      </Fade>
     );
   } else {
     return(<></>);

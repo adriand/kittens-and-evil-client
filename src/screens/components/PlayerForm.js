@@ -8,11 +8,12 @@ import {
 } from 'reactstrap';
 
 export default function PlayerForm(props) {
-  const [value, setValue] = useState('');
+  const [nameValue, setNameValue] = useState('');
+  const [genderValue, setGenderValue] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (value !== '') {
+    if (nameValue !== '' && genderValue !== '') {
 
       fetch(`${process.env.REACT_APP_API_URL}/players`, {
         method: "POST",
@@ -22,17 +23,18 @@ export default function PlayerForm(props) {
         },
         body: JSON.stringify({
           "player": {
-            "name": value
+            "name": nameValue,
+            "gender": genderValue
           }
         })
       })
       .then(resp => resp.json())
       .then(player => {
-        console.log(player);
         props.capturePlayer(player);
-      });
+      })
+      .catch((err) => {props.setNotice({message: `${err}`, color: "danger"})});
     } else {
-      alert("Please enter your name.");
+      alert("Please enter a name and gender.");
     }
   }
 
@@ -40,9 +42,32 @@ export default function PlayerForm(props) {
     <Form onSubmit={handleSubmit}>
       <FormGroup>
         <Label for="name">
-          Player Name
-          <Input type="text" value={value} onChange={e => setValue(e.target.value)} />
+          Enter your name
+          <Input type="text" value={nameValue} onChange={e => setNameValue(e.target.value)} />
         </Label>
+      </FormGroup>
+      <FormGroup tag="fieldset">
+        <Label>
+          Choose your gender
+        </Label>
+        <FormGroup check>
+          <Label check>
+            <Input type="radio" name="gender" onChange={e => setGenderValue("f")} />
+            Female
+          </Label>
+        </FormGroup>
+        <FormGroup check>
+          <Label check>
+            <Input type="radio" name="gender" onChange={e => setGenderValue("m")} />
+            Male
+          </Label>
+        </FormGroup>
+        <FormGroup check disabled>
+          <Label check>
+            <Input type="radio" name="gender" onChange={e => setGenderValue("x")} />
+            X
+          </Label>
+        </FormGroup>
       </FormGroup>
       <Button>Submit</Button>
     </Form>

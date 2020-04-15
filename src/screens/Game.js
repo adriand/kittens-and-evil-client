@@ -30,10 +30,17 @@ export default function Game(props) {
     );
   } else {
     return(
-      <GameSetup
-        currentPlayer={currentPlayer}
-        capturePlayer={capturePlayer}>
-      </GameSetup>
+      <>
+        <img id="splash" src="/splash.png" />
+        <br />
+        <br />
+        <GameSetup
+          currentPlayer={currentPlayer}
+          capturePlayer={capturePlayer}
+          setNotice={props.setNotice}
+        >
+        </GameSetup>
+      </>
     );
   }
 }

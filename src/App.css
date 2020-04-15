@@ -3,3 +3,12 @@
   color: grey;
   font-size: .75rem;
 }
+
+#splash {
+  width: 100%;
+}
+
+body {
+  background-color: #040926 !important;
+  color: #a85751 !important;
+}

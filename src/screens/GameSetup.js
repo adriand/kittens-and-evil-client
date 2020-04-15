@@ -6,6 +6,6 @@ export default function GameSetup(props) {
   if (props.currentPlayer) {
     return <GameStart currentPlayer={props.currentPlayer}></GameStart>
   } else {
-    return <PlayerForm capturePlayer={props.capturePlayer} />;
+    return <PlayerForm capturePlayer={props.capturePlayer} setNotice={props.setNotice} />;
   }
 }
